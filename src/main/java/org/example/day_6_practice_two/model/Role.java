@@ -1,7 +1,9 @@
 package org.example.day_6_practice_two.model;
 
 import jakarta.persistence.*;
-import org.example.day_6_practice_two.model.enumModel.RoleEnum;
+import org.example.day_6_practice_two.model.enumModel.ERole;
+
+import java.nio.charset.Charset;
 
 @Entity
 @Table(name = "roles")
@@ -12,14 +14,15 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private RoleEnum role;
+    @Column(length = 20)
+    private ERole name;
 
     public Role() {
     }
 
-    public Role(Long id, RoleEnum role) {
+    public Role(Long id, ERole name) {
         this.id = id;
-        this.role = role;
+        this.name = name;
     }
 
     public Long getId() {
@@ -30,11 +33,11 @@ public class Role {
         this.id = id;
     }
 
-    public RoleEnum getRole() {
-        return role;
+    public ERole getName() {
+        return name;
     }
 
-    public void setRole(RoleEnum role) {
-        this.role = role;
+    public void setName(ERole name) {
+        this.name = name;
     }
 }
